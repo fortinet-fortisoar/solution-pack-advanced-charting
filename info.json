@@ -1,0 +1,57 @@
+{
+    "name": "timeSeriesCharting",
+    "version": "1.0.0",
+    "fsrMinCompatibility": "7.3.1",
+    "type": "solutionpack",
+    "local": true,
+    "label": "Time Series Charting",
+    "dependencies": [],
+    "prerequisite": null,
+    "publisher": "Fortinet",
+    "description": "Create single- or multi-dataset charts of record data over time using the included widget, module, and playbook collection",
+    "help": null,
+    "category": [
+        "Reporting"
+    ],
+    "supportInfo": null,
+    "iconLarge": null,
+    "date": "2023-02-24T17:51:28+00:00",
+    "contents": {
+        "modules": {
+            "time_series_charts": {
+                "name": "Time Series Charts",
+                "apiName": "time_series_charts"
+            }
+        },
+        "viewTemplates": {
+            "time_series_charts": {
+                "name": "Time Series Charts",
+                "apiName": "time_series_charts",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            }
+        },
+        "playbooks": [
+            {
+                "name": "10 - SP - Time Series Charts"
+            }
+        ],
+        "globalVariables": [],
+        "connectors": [
+            {
+                "name": "Time Series Chart Utilities",
+                "apiName": "timeSeriesUtilities",
+                "version": "1.0.0"
+            }
+        ],
+        "widgets": [
+            {
+                "apiName": "timeSeriesCharts",
+                "name": "Time Series Charts"
+            }
+        ]
+    }
+}

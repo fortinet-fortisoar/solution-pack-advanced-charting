@@ -1,0 +1,11 @@
+{
+    "@context": "\/api\/3\/contexts\/WorkflowCollection",
+    "@type": "WorkflowCollection",
+    "name": "10 - SP - Time Series Charts",
+    "description": null,
+    "visible": true,
+    "image": null,
+    "uuid": "931361e0-c6fa-455a-9a0f-eada0e9645b1",
+    "deletedAt": null,
+    "recordTags": []
+}

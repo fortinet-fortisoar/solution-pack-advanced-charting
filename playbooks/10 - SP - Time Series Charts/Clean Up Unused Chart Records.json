@@ -1,0 +1,187 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Clean Up Unused Chart Records",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": true,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/931361e0-c6fa-455a-9a0f-eada0e9645b1",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/8b68987e-3f9c-4f7c-9816-cf4e1292703b",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    },
+                    "widgetType": "timeSeriesCharts-1.0.0"
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "group": null,
+            "uuid": "8b68987e-3f9c-4f7c-9816-cf4e1292703b"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Query Generic Templates",
+            "description": null,
+            "arguments": {
+                "params": {
+                    "iri": "\/api\/3\/generic_templates?$limit=100",
+                    "body": "",
+                    "method": "GET"
+                },
+                "version": "3.2.3",
+                "connector": "cyops_utilities",
+                "operation": "make_cyops_request",
+                "operationTitle": "FSR: Make FortiSOAR API Call",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+            "group": null,
+            "uuid": "c1112b35-50e1-420a-8cb3-a1b98421d571"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Isolate instances of TS Chart widget",
+            "description": null,
+            "arguments": {
+                "config": "284804f2-49f1-49cd-a080-05137d311160",
+                "params": {
+                    "python_function": "template_data = {{vars.steps.Query_Generic_Templates.data['hydra:member']}}\n\ndef bruteforce(data_list, type_target, hits=[]):\n    for item in data_list:\n        if item.get(\"type\", None) == type_target:\n            hits.append(item)\n            continue\n        elif item.get(\"type\", None) == \"rows\":\n            bruteforce(item['config']['rows'], type_target, hits=hits)\n        elif \"type\" not in item and \"columns\" in item:\n            bruteforce(item['columns'], type_target, hits=hits)\n        elif \"type\"not in item and \"widgets\" in item:\n            bruteforce(item['widgets'], type_target, hits=hits)\n    return hits\n  \ntargetWidget = \"{{vars.widgetType}}\"\nhits = bruteforce(template_data, targetWidget)\nhitsconfig = [hit['config'] for hit in hits]\nprint(hitsconfig)"
+                },
+                "version": "2.0.1",
+                "connector": "code-snippet",
+                "operation": "python_inline_code_editor",
+                "operationTitle": "Execute Python Code",
+                "step_variables": {
+                    "chart_instances": "{{vars.steps.Isolate_instances_of_TS_Chart_widget.data['code_output']}}"
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8",
+            "group": null,
+            "uuid": "7e47f78f-e166-494b-be6d-aa7b512a1918"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Delete unused records",
+            "description": null,
+            "arguments": {
+                "when": "{{vars.steps.Find_TS_Chart_Records_with_no_widget|length > 0}}",
+                "params": {
+                    "iri": "\/api\/3\/delete\/time_series_charts",
+                    "body": "{'ids': {{ vars.steps.Find_TS_Chart_Records_with_no_widget|json_query('[].uuid') }} }",
+                    "method": "DELETE"
+                },
+                "version": "3.2.3",
+                "connector": "cyops_utilities",
+                "operation": "make_cyops_request",
+                "operationTitle": "FSR: Make FortiSOAR API Call",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+            "group": null,
+            "uuid": "2ce890a7-3af7-4677-b1cb-4f696ebe1429"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Find TS Chart Records with no widget",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "uuid",
+                            "value": "{{vars.chart_instances|json_query(\"[*].record_uuid\")}}",
+                            "operator": "nin",
+                            "_operator": "nin"
+                        }
+                    ],
+                    "__selectFields": [
+                        "id"
+                    ]
+                },
+                "module": "time_series_charts?$limit=1000",
+                "checkboxFields": true,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "21b9e022-2844-42a8-b44e-21d099eaed34"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Query Generic Templates -> Isolate instances of advanced charting widget",
+            "targetStep": "\/api\/3\/workflow_steps\/7e47f78f-e166-494b-be6d-aa7b512a1918",
+            "sourceStep": "\/api\/3\/workflow_steps\/c1112b35-50e1-420a-8cb3-a1b98421d571",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "96355f68-77dd-4ced-8ef6-9cc2d2427246"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Query Generic Templates",
+            "targetStep": "\/api\/3\/workflow_steps\/c1112b35-50e1-420a-8cb3-a1b98421d571",
+            "sourceStep": "\/api\/3\/workflow_steps\/8b68987e-3f9c-4f7c-9816-cf4e1292703b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "70ea1ae7-19f6-4d2f-90e8-6ca026f7ad1c"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Isolate instances of advanced charting widget -> Find Adv Chart Records with no widget",
+            "targetStep": "\/api\/3\/workflow_steps\/21b9e022-2844-42a8-b44e-21d099eaed34",
+            "sourceStep": "\/api\/3\/workflow_steps\/7e47f78f-e166-494b-be6d-aa7b512a1918",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "2563969f-8667-4d74-8559-d4296a75efe8"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Adv Chart Records with no widget -> Delete unused records",
+            "targetStep": "\/api\/3\/workflow_steps\/2ce890a7-3af7-4677-b1cb-4f696ebe1429",
+            "sourceStep": "\/api\/3\/workflow_steps\/21b9e022-2844-42a8-b44e-21d099eaed34",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "93f2526c-41e1-4d19-938e-6e3ce6109956"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "5573dd8a-ce32-4450-a541-3e36fc114a5c",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": []
+}
