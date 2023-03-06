@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "[POST CREATE] > Trigger Chart Queries",
+    "name": "Time Series Chart - Trigger Chart Queries (Upon Creation)",
     "aliasName": null,
     "tag": null,
     "description": null,
