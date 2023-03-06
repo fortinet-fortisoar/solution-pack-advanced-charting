@@ -1,6 +1,6 @@
 [
     {
-        "name": "timeSeriesUtilities",
+        "name": "timeSeriesChartUtilities",
         "label": "Time Series Chart Utilities",
         "category": null,
         "description": "This connector provides utility functions for use with the Time Series Chart Widget",
