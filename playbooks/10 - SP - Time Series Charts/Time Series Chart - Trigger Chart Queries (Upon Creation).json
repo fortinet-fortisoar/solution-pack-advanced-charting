@@ -1,10 +1,10 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Time Series Chart - Trigger Chart Queries (When Updated)",
+    "name": "Time Series Chart - Trigger Chart Queries (Upon Creation)",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Triggers the initial chart update process whenever a record is created in the Time Series Charts Module. This usually happens when a new instance of the Time Series Charts Widget is configured",
     "isActive": true,
     "debug": true,
     "singleRecordExecution": false,
@@ -13,7 +13,7 @@
     "synchronous": false,
     "collection": "\/api\/3\/workflow_collections\/931361e0-c6fa-455a-9a0f-eada0e9645b1",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/f6fea72b-1d82-4a29-985f-6eee7cc77879",
+    "triggerStep": "\/api\/3\/workflow_steps\/ae05b548-fe55-461d-b79c-ef7e1278266a",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -36,39 +36,24 @@
                     "sort": [],
                     "limit": 30,
                     "logic": "AND",
-                    "filters": [
-                        {
-                            "type": "primitive",
-                            "field": "queryModified",
-                            "value": "",
-                            "operator": "changed",
-                            "_operator": "changed"
-                        },
-                        {
-                            "type": "primitive",
-                            "field": "queryModified",
-                            "value": true,
-                            "operator": "eq",
-                            "_operator": "eq"
-                        }
-                    ]
+                    "filters": []
                 }
             },
             "status": null,
-            "top": "40",
-            "left": "40",
-            "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
             "group": null,
-            "uuid": "f6fea72b-1d82-4a29-985f-6eee7cc77879"
+            "uuid": "ae05b548-fe55-461d-b79c-ef7e1278266a"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Prepare and Execute Queries",
+            "name": "Call Query Playbook",
             "description": null,
             "arguments": {
                 "arguments": {
                     "pbStartTime": "{{arrow.get().replace(second=0, microsecond=0) }}",
-                    "chart_record": "{{vars.input.records[0] }}"
+                    "chart_record": "{{vars.input.records[0]}}"
                 },
                 "apply_async": false,
                 "step_variables": [],
@@ -77,27 +62,27 @@
                 "workflowReference": "\/api\/3\/workflows\/9b4a71c5-3afb-468f-85aa-ccbb32060901"
             },
             "status": null,
-            "top": "220",
-            "left": "40",
+            "top": "165",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
             "group": null,
-            "uuid": "3325fafc-f8e5-442b-9b92-2f2d5f292fb6"
+            "uuid": "240d5fcb-03bb-4355-87d7-c31dece68f3e"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Prepare and Execute Queries",
-            "targetStep": "\/api\/3\/workflow_steps\/3325fafc-f8e5-442b-9b92-2f2d5f292fb6",
-            "sourceStep": "\/api\/3\/workflow_steps\/f6fea72b-1d82-4a29-985f-6eee7cc77879",
+            "name": "Start -> Call Query Playbook",
+            "targetStep": "\/api\/3\/workflow_steps\/240d5fcb-03bb-4355-87d7-c31dece68f3e",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae05b548-fe55-461d-b79c-ef7e1278266a",
             "label": null,
             "isExecuted": false,
-            "uuid": "29aa56d0-95a9-41f0-ad6c-fd37dc99dd29"
+            "uuid": "65b499c6-934f-40ed-9ebc-820430436571"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "3312c39a-3efb-4bad-9003-b91e343ddb5d",
+    "uuid": "a4e2ad5d-0d53-44f0-af8d-b105e62bdbcb",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

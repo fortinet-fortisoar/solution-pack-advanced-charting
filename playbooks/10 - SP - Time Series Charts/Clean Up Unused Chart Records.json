@@ -4,7 +4,7 @@
     "name": "Clean Up Unused Chart Records",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Searches for records in the Time Series Charts module which do not correspond to active instances of the Time Series Charts Widget and deletes them",
     "isActive": true,
     "debug": true,
     "singleRecordExecution": false,

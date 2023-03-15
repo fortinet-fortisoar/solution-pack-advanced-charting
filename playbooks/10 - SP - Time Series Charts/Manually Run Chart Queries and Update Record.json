@@ -4,7 +4,7 @@
     "name": "Manually Run Chart Queries and Update Record",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Allows users to trigger the update process for a specific chart from the Time Series Charts Module",
     "isActive": true,
     "debug": true,
     "singleRecordExecution": false,

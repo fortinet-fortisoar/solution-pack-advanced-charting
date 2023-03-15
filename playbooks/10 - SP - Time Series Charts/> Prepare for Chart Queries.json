@@ -4,7 +4,7 @@
     "name": "> Prepare for Chart Queries",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Pulls the chart configuration from a single record in the Time Series Charts Module and builds the base queries for it. This playbook then calls the \">> Run Chart Query On Time Buckets\" playbook before adding the query results to the Time Series Charts record",
     "isActive": true,
     "debug": true,
     "singleRecordExecution": false,

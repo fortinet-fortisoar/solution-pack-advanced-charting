@@ -4,7 +4,7 @@
     "name": "Update All Time Series Charts",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Calls the \"> Prepare for Chart Queries\" playbook for all records in the Time Series Charts Module. This effectively updates the data in all Time Series Chart Widgets. This playbook should be run on a schedule to keep the charts up-to-date",
     "isActive": true,
     "debug": true,
     "singleRecordExecution": false,

@@ -4,7 +4,7 @@
     "name": ">> Run Chart Query On Time Buckets",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Takes the base query for a single Data Set, as well as the list of time windows which need to be queried and performs the base query bounded by each of those time windows. Outputs the results of these queries",
     "isActive": true,
     "debug": true,
     "singleRecordExecution": false,
