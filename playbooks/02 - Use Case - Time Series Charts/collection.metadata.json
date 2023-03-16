@@ -1,0 +1,11 @@
+{
+    "@context": "\/api\/3\/contexts\/WorkflowCollection",
+    "@type": "WorkflowCollection",
+    "name": "02 - Use Case - Time Series Charts",
+    "description": null,
+    "visible": true,
+    "image": null,
+    "uuid": "ec6f19dc-69bd-4e04-a8f1-9f8cf93f0420",
+    "deletedAt": null,
+    "recordTags": []
+}

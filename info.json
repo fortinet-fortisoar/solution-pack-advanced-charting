@@ -37,13 +37,28 @@
         "playbooks": [
             {
                 "name": "10 - SP - Time Series Charts"
+            },
+            {
+                "name": "02 - Use Case - Time Series Charts"
             }
         ],
         "globalVariables": [],
+        "dashboards": [
+            {
+                "name": "Time Series Chart Examples"
+            }
+        ],
+        "recordSets": [
+            {
+                "name": "Scenario",
+                "apiName": "scenario",
+                "count": 1
+            }
+        ],
         "connectors": [
             {
                 "name": "Time Series Chart Utilities",
-                "apiName": "timeSeriesUtilities",
+                "apiName": "time-series-chart-utilities",
                 "version": "1.0.0"
             }
         ],
