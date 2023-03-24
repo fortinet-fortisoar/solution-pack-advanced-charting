@@ -118,7 +118,7 @@
                     "dateFormatString": "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
                 },
                 "version": "1.0.0",
-                "connector": "timeSeriesUtilities",
+                "connector": "time-series-chart-utilities",
                 "operation": "assemble_query_time_windows",
                 "operationTitle": "Assemble Query Time Windows",
                 "pickFromTenant": false,
@@ -141,7 +141,7 @@
                     "dataSets": "{{vars.input.params.chart_record.chartConfig.dataSets}}"
                 },
                 "version": "1.0.0",
-                "connector": "timeSeriesUtilities",
+                "connector": "time-series-chart-utilities",
                 "operation": "flatten_data_sets_and_groups",
                 "operationTitle": "Flatten Data Sets and Groups",
                 "pickFromTenant": false,
@@ -168,7 +168,7 @@
                     "existingDataColumns": "{{vars.input.params.chart_record.queryResults.data.columns or []}}"
                 },
                 "version": "1.0.0",
-                "connector": "timeSeriesUtilities",
+                "connector": "time-series-chart-utilities",
                 "operation": "combine_query_results_into_data_columns",
                 "operationTitle": "Combine Query Results into Data Columns",
                 "pickFromTenant": false,
