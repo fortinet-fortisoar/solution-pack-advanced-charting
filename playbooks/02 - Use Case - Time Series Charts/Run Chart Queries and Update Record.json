@@ -1,22 +1,44 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Manually Run Chart Queries and Update Record",
+    "name": "Run Chart Queries and Update Record",
     "aliasName": null,
     "tag": null,
     "description": "Allows users to trigger the update process for a specific chart from the Time Series Charts Module",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [
         "chartUuid"
     ],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/931361e0-c6fa-455a-9a0f-eada0e9645b1",
+    "collection": "\/api\/3\/workflow_collections\/ec6f19dc-69bd-4e04-a8f1-9f8cf93f0420",
     "versions": [],
     "triggerStep": "\/api\/3\/workflow_steps\/1f84eee5-6ad3-4b18-b52a-ccc64b7ebdf8",
     "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Prepare and Execute Queries",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "pbStartTime": "{{arrow.get().replace(second=0, microsecond=0) }}",
+                    "chart_record": "{{vars.input.records[0] if vars.input.records else ('\/api\/3\/time_series_charts\/'+vars.input.params.chartUuid) |fromIRI }}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/9b4a71c5-3afb-468f-85aa-ccbb32060901"
+            },
+            "status": null,
+            "top": "160",
+            "left": "40",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "25c18957-1233-4120-b63b-0e905110ece9"
+        },
         {
             "@type": "WorkflowStep",
             "name": "Start",
@@ -57,28 +79,6 @@
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
             "group": null,
             "uuid": "1f84eee5-6ad3-4b18-b52a-ccc64b7ebdf8"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Prepare and Execute Queries",
-            "description": null,
-            "arguments": {
-                "arguments": {
-                    "pbStartTime": "{{arrow.get().replace(second=0, microsecond=0) }}",
-                    "chart_record": "{{vars.input.records[0] if vars.input.records else ('\/api\/3\/time_series_charts\/'+vars.input.params.chartUuid) |fromIRI }}"
-                },
-                "apply_async": false,
-                "step_variables": [],
-                "pass_parent_env": false,
-                "pass_input_record": false,
-                "workflowReference": "\/api\/3\/workflows\/9b4a71c5-3afb-468f-85aa-ccbb32060901"
-            },
-            "status": null,
-            "top": "160",
-            "left": "40",
-            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "group": null,
-            "uuid": "25c18957-1233-4120-b63b-0e905110ece9"
         }
     ],
     "routes": [
@@ -89,6 +89,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/1f84eee5-6ad3-4b18-b52a-ccc64b7ebdf8",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "f43a7560-4bad-47c6-9144-988f8327748b"
         }
     ],
@@ -98,5 +99,7 @@
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
-    "recordTags": []
+    "recordTags": [
+        "Manual"
+    ]
 }

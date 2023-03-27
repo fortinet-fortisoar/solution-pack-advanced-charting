@@ -9,36 +9,70 @@
                     {
                         "widgets": [
                             {
-                                "type": "editableForm",
-                                "config": []
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "tabs",
+                                "type": "primaryDetail",
                                 "config": {
-                                    "tabs": [
+                                    "wid": "b4a97954-bcec-43bd-af57-f25132d5f275",
+                                    "idField": "id",
+                                    "picklistFieldReadOnly": false,
+                                    "titleFieldReadOnly": false,
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "Under Investigation In",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    },
+                                    "titleField": "chartName"
+                                }
+                            },
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "8d9c306e-fd8e-44ba-9975-dc3967ba3ab7",
+                                    "rows": [
                                         {
-                                            "title": "Related Records",
-                                            "widget": {
-                                                "type": "relationship.subtab",
-                                                "config": []
-                                            }
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "chartConfig",
+                                                            "highlightMode": false,
+                                                            "readOnly": false
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                },
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "queryResults",
+                                                            "highlightMode": false,
+                                                            "readOnly": false
+                                                        },
+                                                        {
+                                                            "name": "queryModified",
+                                                            "highlightMode": true,
+                                                            "readOnly": false
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
                             }
-                        ]
+                        ],
+                        "style": "col-lg-12"
                     }
-                ]
+                ],
+                "wid": "3d157f08-b800-4232-b10b-5ca372e2c3a8",
+                "_collapsed": false
             }
-        ]
+        ],
+        "actionButtons": [],
+        "wid": "a1d7551b-2cec-4ead-8bd6-adf075063866",
+        "metadata": []
     },
     "uuid": "modules-time_series_charts-detail"
 }

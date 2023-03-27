@@ -2,7 +2,7 @@
     "@context": "\/api\/3\/contexts\/Dashboard",
     "@type": "Dashboard",
     "uuid": "6cf26c4a-b65e-4a0f-8145-71e4252e68f8",
-    "displayName": "Time Series Chart Examples",
+    "displayName": "Time Series Scenario Charts",
     "type": "rows",
     "templateType": "dashboard",
     "roles": [],

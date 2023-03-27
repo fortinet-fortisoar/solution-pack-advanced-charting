@@ -5,11 +5,24 @@
     "type": "solutionpack",
     "local": true,
     "label": "Time Series Charting",
-    "dependencies": [],
+    "dependencies": [
+        {
+            "name": "sOARFramework",
+            "type": "solutionpack",
+            "label": "SOAR Framework",
+            "minVersion": null
+        },
+        {
+            "name": "socSimulator",
+            "type": "solutionpack",
+            "label": "SOC Simulator",
+            "minVersion": null
+        }
+    ],
     "prerequisite": null,
     "publisher": "Fortinet",
-    "description": "Create single- or multi-dataset charts of record data over time using the included widget, module, and playbook collection",
-    "help": null,
+    "description": "Create single or multi-dataset charts of record data over time using the included widget, module, and playbook collection",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-time-series-charts/blob/release/1.0.0/README.md",
     "category": [
         "Reporting"
     ],
@@ -34,10 +47,12 @@
                 ]
             }
         },
-        "playbooks": [
+        "roles": [
             {
-                "name": "10 - SP - Time Series Charts"
-            },
+                "name": "Full App Permissions"
+            }
+        ],
+        "playbooks": [
             {
                 "name": "02 - Use Case - Time Series Charts"
             }
@@ -45,7 +60,7 @@
         "globalVariables": [],
         "dashboards": [
             {
-                "name": "Time Series Chart Examples"
+                "name": "Time Series Scenario Charts"
             }
         ],
         "recordSets": [
@@ -53,6 +68,11 @@
                 "name": "Scenario",
                 "apiName": "scenario",
                 "count": 1
+            },
+            {
+                "name": "Time Series Charts",
+                "apiName": "time_series_charts",
+                "count": 2
             }
         ],
         "connectors": [
