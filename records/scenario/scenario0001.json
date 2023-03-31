@@ -16,7 +16,7 @@
                 }
             ]
         },
-        "createdAlertsID": "",
+        "createdAlertsID": null,
         "uuid": "a282a7a0-f768-49e4-98e1-336300e34326",
         "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
         "createDate": 1678915741.405219,
