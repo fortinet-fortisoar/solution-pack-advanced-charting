@@ -51,7 +51,7 @@
             "arguments": {
                 "name": "Time Series Chart Utilities",
                 "params": {
-                    "period": "{{vars.input.params['chart_record']['chartConfig']['timePeriod']}}",
+                    "time_period": "{{vars.input.params['chart_record']['chartConfig']['timePeriod']}}",
                     "relativeDate": "{{vars.input.params['chart_record']['chartConfig']['relativeDate']}}",
                     "existingTimes": "{{vars.input.params['chart_record']['queryResults']['data']['columns'][0] or []}}",
                     "queryModified": "{{vars.input.params['chart_record']['queryModified']}}",
