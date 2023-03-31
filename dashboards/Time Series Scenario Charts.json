@@ -1,0 +1,189 @@
+{
+    "@context": "\/api\/3\/contexts\/Dashboard",
+    "@type": "Dashboard",
+    "uuid": "6cf26c4a-b65e-4a0f-8145-71e4252e68f8",
+    "displayName": "Time Series Scenario Charts",
+    "type": "rows",
+    "templateType": "dashboard",
+    "roles": [],
+    "parentTemplateId": null,
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "timeSeriesCharts-1.0.0",
+                                "config": {
+                                    "wid": "d5ffdd06-c074-41f0-9ba7-273b362f6650",
+                                    "dataSets": [
+                                        {
+                                            "isOpen": false,
+                                            "title": "",
+                                            "group": true,
+                                            "resource": null,
+                                            "mappingField": null,
+                                            "dataSets": [
+                                                {
+                                                    "title": "Non-Escalated Alerts",
+                                                    "resource": "alerts",
+                                                    "query": {
+                                                        "sort": [],
+                                                        "limit": 30,
+                                                        "logic": "AND",
+                                                        "filters": [
+                                                            {
+                                                                "field": "escalatedtoincident",
+                                                                "operator": "eq",
+                                                                "value": "\/api\/3\/picklists\/2128a09c-153d-4db3-985d-de6be33deae5",
+                                                                "_value": {
+                                                                    "itemValue": "No",
+                                                                    "@id": "\/api\/3\/picklists\/2128a09c-153d-4db3-985d-de6be33deae5"
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "field": "name",
+                                                                "operator": "eq",
+                                                                "_operator": "eq",
+                                                                "value": "Randomly Generated Alert for Time Series Chart Examples",
+                                                                "type": "primitive"
+                                                            }
+                                                        ],
+                                                        "aggregates": [
+                                                            {
+                                                                "operator": "countdistinct",
+                                                                "field": "*",
+                                                                "alias": "total"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "subset": true,
+                                                    "mappingField": "alertDetectionDate"
+                                                },
+                                                {
+                                                    "title": "Escalated Alerts",
+                                                    "resource": "alerts",
+                                                    "query": {
+                                                        "sort": [],
+                                                        "limit": 30,
+                                                        "logic": "AND",
+                                                        "filters": [
+                                                            {
+                                                                "field": "name",
+                                                                "operator": "eq",
+                                                                "_operator": "eq",
+                                                                "value": "Randomly Generated Alert for Time Series Chart Examples",
+                                                                "type": "primitive"
+                                                            },
+                                                            {
+                                                                "field": "escalatedtoincident",
+                                                                "operator": "eq",
+                                                                "value": "\/api\/3\/picklists\/fa12313b-66af-4a2e-864e-a5f19241b734",
+                                                                "_value": {
+                                                                    "display": "Yes",
+                                                                    "itemValue": "Yes",
+                                                                    "@id": "\/api\/3\/picklists\/fa12313b-66af-4a2e-864e-a5f19241b734"
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        ],
+                                                        "aggregates": [
+                                                            {
+                                                                "operator": "countdistinct",
+                                                                "field": "*",
+                                                                "alias": "total"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "subset": true,
+                                                    "mappingField": "alertDetectionDate"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "title": "Daily Alert Escalations this Month",
+                                    "timePeriod": "Daily",
+                                    "relativeDate": {
+                                        "differenceType": "months",
+                                        "differenceValue": 0
+                                    },
+                                    "correlationValue": "e3150be7-9ff9-432d-92c3-4d03fe864b51",
+                                    "record_uuid": "db85bcb8-7150-4b2f-a129-05df8298a70d"
+                                }
+                            },
+                            {
+                                "type": "timeSeriesCharts-1.0.0",
+                                "config": {
+                                    "wid": "a20b475f-ab4b-4226-ab10-830c82654feb",
+                                    "dataSets": [
+                                        {
+                                            "isOpen": false,
+                                            "title": "Alerts Detected",
+                                            "group": false,
+                                            "resource": "alerts",
+                                            "mappingField": "alertDetectionDate",
+                                            "query": {
+                                                "sort": [],
+                                                "limit": 30,
+                                                "logic": "AND",
+                                                "filters": [
+                                                    {
+                                                        "field": "name",
+                                                        "operator": "eq",
+                                                        "_operator": "eq",
+                                                        "value": "Randomly Generated Alert for Time Series Chart Examples",
+                                                        "type": "primitive"
+                                                    }
+                                                ],
+                                                "aggregates": [
+                                                    {
+                                                        "operator": "countdistinct",
+                                                        "field": "*",
+                                                        "alias": "total"
+                                                    },
+                                                    {
+                                                        "operator": "groupby",
+                                                        "field": "severity.itemValue",
+                                                        "alias": "severity"
+                                                    }
+                                                ]
+                                            },
+                                            "groupingField": "severity",
+                                            "plotType": "Bar",
+                                            "groupingFieldOptions": [
+                                                "Minimal",
+                                                "Low",
+                                                "Medium",
+                                                "High",
+                                                "Critical"
+                                            ]
+                                        }
+                                    ],
+                                    "title": "Alerts Detected this Month by Type",
+                                    "timePeriod": "Daily",
+                                    "relativeDate": {
+                                        "differenceType": "months",
+                                        "differenceValue": 0
+                                    },
+                                    "correlationValue": "ef1ffb85-52ad-4cb5-8878-bd14d437294b",
+                                    "record_uuid": "9eac5ffd-49fa-4d0d-a05f-214074016755"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "9b7876aa-6d67-4359-a108-10c320bfe10a",
+                "_collapsed": false
+            }
+        ],
+        "wid": "e1adf34d-a3f6-4969-8827-daa01b87ed44",
+        "metadata": {
+            "customTemplateTitle": "Dashboard"
+        }
+    },
+    "filterArray": [],
+    "updateDate": null
+}

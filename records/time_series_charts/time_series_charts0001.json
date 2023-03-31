@@ -1,0 +1,181 @@
+[
+    {
+        "@type": "TimeSeriesChart",
+        "chartName": "Alerts Detected this Month by Type",
+        "correlationValue": "ef1ffb85-52ad-4cb5-8878-bd14d437294b",
+        "queryModified": false,
+        "queryResults": [],
+        "chartConfig": {
+            "wid": "a20b475f-ab4b-4226-ab10-830c82654feb",
+            "title": "Alerts Detected this Month by Type",
+            "dataSets": [
+                {
+                    "group": false,
+                    "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "type": "primitive",
+                                "field": "name",
+                                "value": "Randomly Generated Alert for Time Series Chart Examples",
+                                "operator": "eq",
+                                "_operator": "eq"
+                            }
+                        ],
+                        "aggregates": [
+                            {
+                                "alias": "total",
+                                "field": "*",
+                                "operator": "countdistinct"
+                            },
+                            {
+                                "alias": "severity",
+                                "field": "severity.itemValue",
+                                "operator": "groupby"
+                            }
+                        ]
+                    },
+                    "title": "Alerts Detected",
+                    "isOpen": false,
+                    "plotType": "Bar",
+                    "resource": "alerts",
+                    "mappingField": "alertDetectionDate",
+                    "groupingField": "severity",
+                    "groupingFieldOptions": [
+                        "Minimal",
+                        "Low",
+                        "Medium",
+                        "High",
+                        "Critical"
+                    ]
+                }
+            ],
+            "timePeriod": "Daily",
+            "relativeDate": {
+                "differenceType": "months",
+                "differenceValue": 0
+            },
+            "correlationValue": "ef1ffb85-52ad-4cb5-8878-bd14d437294b"
+        },
+        "uuid": "9eac5ffd-49fa-4d0d-a05f-214074016755",
+        "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+        "createDate": 1678920285.520887,
+        "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+        "modifyDate": 1679699658.965824,
+        "id": 3,
+        "recordTags": []
+    },
+    {
+        "@type": "TimeSeriesChart",
+        "chartName": "Daily Alert Escalations this Month",
+        "correlationValue": "e3150be7-9ff9-432d-92c3-4d03fe864b51",
+        "queryModified": false,
+        "queryResults": [],
+        "chartConfig": {
+            "wid": "d5ffdd06-c074-41f0-9ba7-273b362f6650",
+            "title": "Daily Alert Escalations this Month",
+            "dataSets": [
+                {
+                    "group": true,
+                    "title": "",
+                    "isOpen": false,
+                    "dataSets": [
+                        {
+                            "query": {
+                                "sort": [],
+                                "limit": 30,
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "type": "object",
+                                        "field": "escalatedtoincident",
+                                        "value": "\/api\/3\/picklists\/2128a09c-153d-4db3-985d-de6be33deae5",
+                                        "_value": {
+                                            "@id": "\/api\/3\/picklists\/2128a09c-153d-4db3-985d-de6be33deae5",
+                                            "itemValue": "No"
+                                        },
+                                        "operator": "eq"
+                                    },
+                                    {
+                                        "type": "primitive",
+                                        "field": "name",
+                                        "value": "Randomly Generated Alert for Time Series Chart Examples",
+                                        "operator": "eq",
+                                        "_operator": "eq"
+                                    }
+                                ],
+                                "aggregates": [
+                                    {
+                                        "alias": "total",
+                                        "field": "*",
+                                        "operator": "countdistinct"
+                                    }
+                                ]
+                            },
+                            "title": "Non-Escalated Alerts",
+                            "subset": true,
+                            "resource": "alerts",
+                            "mappingField": "alertDetectionDate"
+                        },
+                        {
+                            "query": {
+                                "sort": [],
+                                "limit": 30,
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "type": "primitive",
+                                        "field": "name",
+                                        "value": "Randomly Generated Alert for Time Series Chart Examples",
+                                        "operator": "eq",
+                                        "_operator": "eq"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "field": "escalatedtoincident",
+                                        "value": "\/api\/3\/picklists\/fa12313b-66af-4a2e-864e-a5f19241b734",
+                                        "_value": {
+                                            "@id": "\/api\/3\/picklists\/fa12313b-66af-4a2e-864e-a5f19241b734",
+                                            "display": "Yes",
+                                            "itemValue": "Yes"
+                                        },
+                                        "operator": "eq"
+                                    }
+                                ],
+                                "aggregates": [
+                                    {
+                                        "alias": "total",
+                                        "field": "*",
+                                        "operator": "countdistinct"
+                                    }
+                                ]
+                            },
+                            "title": "Escalated Alerts",
+                            "subset": true,
+                            "resource": "alerts",
+                            "mappingField": "alertDetectionDate"
+                        }
+                    ],
+                    "resource": null,
+                    "mappingField": null
+                }
+            ],
+            "timePeriod": "Daily",
+            "record_uuid": "db85bcb8-7150-4b2f-a129-05df8298a70d",
+            "relativeDate": {
+                "differenceType": "months",
+                "differenceValue": 0
+            },
+            "correlationValue": "e3150be7-9ff9-432d-92c3-4d03fe864b51"
+        },
+        "uuid": "db85bcb8-7150-4b2f-a129-05df8298a70d",
+        "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+        "createDate": 1678916122.749661,
+        "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+        "modifyDate": 1679699652.736101,
+        "id": 2,
+        "recordTags": []
+    }
+]

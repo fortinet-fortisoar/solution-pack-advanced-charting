@@ -1,0 +1,108 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Time Series Chart - Trigger Chart Queries (On Update)",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/ec6f19dc-69bd-4e04-a8f1-9f8cf93f0420",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/f6fea72b-1d82-4a29-985f-6eee7cc77879",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Prepare and Execute Queries",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "pbStartTime": "{{arrow.get().replace(second=0, microsecond=0) }}",
+                    "chart_record": "{{vars.input.records[0] }}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/9b4a71c5-3afb-468f-85aa-ccbb32060901"
+            },
+            "status": null,
+            "top": "220",
+            "left": "40",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "3325fafc-f8e5-442b-9b92-2f2d5f292fb6"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "time_series_charts",
+                "resources": [
+                    "time_series_charts"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    }
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "queryModified",
+                            "value": "",
+                            "operator": "changed",
+                            "_operator": "changed"
+                        },
+                        {
+                            "type": "primitive",
+                            "field": "queryModified",
+                            "value": true,
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "40",
+            "left": "40",
+            "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "group": null,
+            "uuid": "f6fea72b-1d82-4a29-985f-6eee7cc77879"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Prepare and Execute Queries",
+            "targetStep": "\/api\/3\/workflow_steps\/3325fafc-f8e5-442b-9b92-2f2d5f292fb6",
+            "sourceStep": "\/api\/3\/workflow_steps\/f6fea72b-1d82-4a29-985f-6eee7cc77879",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "29aa56d0-95a9-41f0-ad6c-fd37dc99dd29"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "3312c39a-3efb-4bad-9003-b91e343ddb5d",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "On Update"
+    ]
+}

@@ -1,0 +1,28 @@
+[
+    {
+        "@type": "Scenario",
+        "configuration": null,
+        "title": "Time Series Charts - Generate Alerts",
+        "description": "Generates Alert records with some randomized fields for use with the Time Series Chart Examples dashboard",
+        "steps": {
+            "Steps": [
+                {
+                    "name": "01 - Generate Alerts from last. 30 days",
+                    "type": "executePlaybook",
+                    "playbookIRI": "\/api\/3\/workflows\/d3dd46bd-433a-43b4-9060-a8412df3cd63",
+                    "preCreateMessage": "Creating Alerts to be rendered in example Time Series Charts",
+                    "postCreateMessage": "",
+                    "waitTimeforNextStep": "0"
+                }
+            ]
+        },
+        "createdAlertsID": null,
+        "uuid": "a282a7a0-f768-49e4-98e1-336300e34326",
+        "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+        "createDate": 1678915741.405219,
+        "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
+        "modifyDate": 1678917920.277035,
+        "id": 3,
+        "recordTags": []
+    }
+]

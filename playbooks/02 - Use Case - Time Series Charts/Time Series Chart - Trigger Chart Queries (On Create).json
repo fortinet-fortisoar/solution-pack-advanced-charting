@@ -1,0 +1,93 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Time Series Chart - Trigger Chart Queries (On Create)",
+    "aliasName": null,
+    "tag": null,
+    "description": "Triggers the initial chart update process whenever a record is created in the Time Series Charts Module. This usually happens when a new instance of the Time Series Charts Widget is configured",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/ec6f19dc-69bd-4e04-a8f1-9f8cf93f0420",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/ae05b548-fe55-461d-b79c-ef7e1278266a",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Call Query Playbook",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "pbStartTime": "{{arrow.get().replace(second=0, microsecond=0) }}",
+                    "chart_record": "{{vars.input.records[0]}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/9b4a71c5-3afb-468f-85aa-ccbb32060901"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "240d5fcb-03bb-4355-87d7-c31dece68f3e"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "time_series_charts",
+                "resources": [
+                    "time_series_charts"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    }
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
+            "group": null,
+            "uuid": "ae05b548-fe55-461d-b79c-ef7e1278266a"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Call Query Playbook",
+            "targetStep": "\/api\/3\/workflow_steps\/240d5fcb-03bb-4355-87d7-c31dece68f3e",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae05b548-fe55-461d-b79c-ef7e1278266a",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "65b499c6-934f-40ed-9ebc-820430436571"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "a4e2ad5d-0d53-44f0-af8d-b105e62bdbcb",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "On Create"
+    ]
+}

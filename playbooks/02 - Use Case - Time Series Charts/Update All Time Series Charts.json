@@ -1,0 +1,200 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Update All Time Series Charts",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/ec6f19dc-69bd-4e04-a8f1-9f8cf93f0420",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/a57d8d06-3271-43d5-a7c6-7da069378ac1",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "standardStartTime": "{{arrow.get().replace(second=0, microsecond=0) }}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "e0012b83-55c9-41b7-b439-66ae1f255896"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Chart Records",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                },
+                "module": "time_series_charts?$limit=1000",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "231b3bfc-bfca-48ae-a133-00e30575f2cf"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Process Each Chart",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Chart_Records}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "arguments": {
+                    "pbStartTime": "{{vars.standardStartTime}}",
+                    "chart_record": "{{vars.item}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_parent_env": false,
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/9b4a71c5-3afb-468f-85aa-ccbb32060901"
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "416a02ee-d2ea-48d7-9e75-79f68ea73be6"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    }
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "group": null,
+            "uuid": "a57d8d06-3271-43d5-a7c6-7da069378ac1"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Get Adv Chart Records",
+            "targetStep": "\/api\/3\/workflow_steps\/231b3bfc-bfca-48ae-a133-00e30575f2cf",
+            "sourceStep": "\/api\/3\/workflow_steps\/e0012b83-55c9-41b7-b439-66ae1f255896",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "2a17c520-4341-4752-8efd-09b5297079f2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Adv Chart Records -> Process Each Chart",
+            "targetStep": "\/api\/3\/workflow_steps\/416a02ee-d2ea-48d7-9e75-79f68ea73be6",
+            "sourceStep": "\/api\/3\/workflow_steps\/231b3bfc-bfca-48ae-a133-00e30575f2cf",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "c9210928-ce47-4431-b74a-5e450cb3b2f2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/e0012b83-55c9-41b7-b439-66ae1f255896",
+            "sourceStep": "\/api\/3\/workflow_steps\/a57d8d06-3271-43d5-a7c6-7da069378ac1",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "6e985a24-8e2a-4c28-a9d1-01983691e52b"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "48a3ea18-970a-4925-a9c0-67caf8400e86",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [],
+    "schedules": [
+        {
+            "id": "gAAAAABkHjIpaiWBvZ8LIqxCd5ROKcTYteSyNaxWv7haf0wSK0Pwxybkw27cTarRmRo0z4ebezU7x9yS2ZwX-D11QVvElPBkVQ==",
+            "crontab": {
+                "id": 3,
+                "minute": "0",
+                "hour": "*\/1",
+                "day_of_week": "*",
+                "day_of_month": "*",
+                "month_of_year": "*",
+                "timezone": "UTC"
+            },
+            "interval": null,
+            "name": "Run Queries for Advanced Charts",
+            "task": "workflow.tasks.periodic_task",
+            "args": "[]",
+            "kwargs": {
+                "wf_iri": "\/api\/3\/workflows\/48a3ea18-970a-4925-a9c0-67caf8400e86",
+                "priority": {
+                    "@id": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+                    "@type": "Picklist",
+                    "itemValue": "Medium",
+                    "orderIndex": 1,
+                    "color": null,
+                    "icon": null,
+                    "listName": "\/api\/3\/picklist_names\/e104ef72-11b4-4d0c-be0e-e1cf3b87b5f2",
+                    "uuid": "2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+                    "id": 111,
+                    "importedBy": []
+                },
+                "exit_if_running": false,
+                "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+                "name": "Run Queries for Advanced Charts",
+                "description": "Adv Charts",
+                "auth": {
+                    "auth_method": "CS HMAC"
+                },
+                "referenceid": null,
+                "schedule_entry_name": "Run Queries for Advanced Charts",
+                "schedule_id": "7a99d43e-ba93-4140-9aa1-be676554378f",
+                "start_time": null,
+                "expires": null,
+                "timezone": "UTC"
+            },
+            "queue": null,
+            "exchange": null,
+            "routing_key": null,
+            "headers": "{}",
+            "priority": 3,
+            "expires": null,
+            "expire_seconds": null,
+            "one_off": false,
+            "start_time": null,
+            "enabled": true,
+            "last_run_at": "2023-03-24T23:00:00.279965Z",
+            "total_run_count": 270,
+            "date_changed": "2023-03-24T23:00:00.458186Z",
+            "description": "Adv Charts",
+            "solar": null,
+            "clocked": null
+        }
+    ]
+}

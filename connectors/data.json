@@ -1,0 +1,13 @@
+[
+    {
+        "name": "time-series-chart-utilities",
+        "label": "Time Series Chart Utilities",
+        "category": null,
+        "description": "This connector provides utility functions for use with the Time Series Chart Widget",
+        "publisher": null,
+        "operation_roles": [],
+        "configurations": [],
+        "dataImports": [],
+        "install_mode": "rpm"
+    }
+]
