@@ -44,7 +44,7 @@
                     "dataSetConfiguration": "{{vars.input.params.dataSet}}"
                 },
                 "version": "1.0.0",
-                "connector": "timeSeriesUtilities",
+                "connector": "time-series-chart-utilities",
                 "operation": "format_data_set_output_with_fieldgrouped",
                 "operationTitle": "Format Data Set Output with Field-Grouped",
                 "pickFromTenant": false,
