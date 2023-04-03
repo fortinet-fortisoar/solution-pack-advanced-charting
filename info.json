@@ -22,7 +22,7 @@
     "prerequisite": null,
     "publisher": "Fortinet",
     "description": "Create single or multi-dataset charts of record data over time using the included widget, module, and playbook collection",
-    "help": "https://github.com/fortinet-fortisoar/solution-pack-time-series-charts/blob/release/1.0.0/README.md",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-time-series-charts/blob/develop/README.md",
     "category": [
         "Reporting"
     ],
