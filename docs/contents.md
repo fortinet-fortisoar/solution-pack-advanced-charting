@@ -34,3 +34,6 @@ The `**Solution Pack's Name**` solution pack contains the following resources.
 | Update All Time Series Charts | Calls the "> Prepare for Chart Queries" playbook for all records in the Time Series Charts Module. This effectively updates the data in all Time Series Chart Widgets. This playbook should be run on a schedule to keep the charts up-to-date |
 
 >**Warning:** We recommend that you clone these playbooks before customizing to avoid loss of information while upgrading the solution pack.
+
+| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) |
+|----------------------------------------------|------------------------------------------------|--------------------------|
