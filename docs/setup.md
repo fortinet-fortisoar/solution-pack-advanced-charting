@@ -58,5 +58,5 @@ As Dashboards and Reports are modified, some instances of the Time Series Chart 
 5. Ensure that the "Start Schedule" checkbox is selected.
 6. Save the schedule.
 
-| [Usage](./docs/usage.md) | [Contents](./docs/contents.md) |
-|--------------------------|--------------------------------|
+| [Usage](./usage.md) | [Contents](./contents.md) |
+|---------------------|---------------------------|

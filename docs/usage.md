@@ -17,5 +17,5 @@ Individual Data Sets (those not created as part of a Data Set Group) can also be
 
 ![Configuring a Time Series Chart Widget with a field-grouped Data Set](./res/field_grouping.png)
 
-| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Contents](./docs/contents.md) |
-|----------------------------------------------|------------------------------------------------|--------------------------------|
+| [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) | [Contents](./contents.md) |
+|-----------------------------------------|-------------------------------------------|---------------------------|
